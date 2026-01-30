@@ -1,32 +1,16 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContextProvider";
+import { Header } from "../../components/Header";
 
 function App() {
-  const [isLightMode, setIsLightMode] = useState<boolean>(false);
-
-  const handleToggleTheme = () => {
-    setIsLightMode((prevMode) => !prevMode);
-  };
+  const { isLightMode } = useContext(ThemeContext);
 
   return (
     <div
       className={`app-container ${isLightMode ? "theme-light" : "theme-dark"}`}
     >
-      <header>
-        <div className="header-section">
-          <h1 className="title">Hold This File</h1>
-        </div>
-        <div className="header-section">
-          <button
-            className={`theme-toggle-button ${isLightMode ? "active" : ""}`}
-            aria-label="Toggle theme"
-            aria-pressed={isLightMode}
-            onClick={handleToggleTheme}
-          >
-            <span className="slider"></span>
-          </button>
-        </div>
-      </header>
-      <main></main>
+      <Header />
+      <main>a</main>
     </div>
   );
 }
